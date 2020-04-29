@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<style type="text/css" media="screen">
+		.parent {
+			background-size: cover;
+			background-position: center;
+			width: 100%;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		form {
+			display: inline-block;
+			background: #b4e9fb;
+			padding: 30px;
+			border-radius: 10px;
+			text-align: center;
+		}
+
+		form input[type="text"] {
+			width: 250px;
+			border-radius: 5px;
+			outline: 0;
+			border: 0;
+			height: 35px;
+			margin: 10px 3px 20px 3px;
+		}
+
+		input[type="submit"] {
+			outline: 0;
+			border: 0;
+			font-weight: 700;
+			color: white;
+			background: #049bcc;
+			padding: 5px 20px;
+			border-radius: 10px;
+			font-size: 20px;
+			width: 100px;
+			display: inline-block;
+		}
+		input[type="submit"]:hover{
+			opacity: .8;
+			transition: all .4s ease-in-out;
+		}
+	</style>
+</head>
+<body style = "background-image: url('/assets/images/backgroundHome.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+	<div style="width: 100%; text-align: center;">
+		<img src="assets/images/logofpt.png" alt="" style="max-width: 30%; height: auto; text-align: center;">
+	</div>
+	<div class="parent">
+		<form name='f' th:action="@{/j_spring_security_check}" method="post">
+			<h2>Login</h2>
+			<p class="message"></p>
+			<input type="text" id="username" name="username" require="required">
+			<input type="text" id="password" name="password" require="required">
+			<div><input type="submit" class="logbtn" id="btnlogin" value="Login" name="btnlogin">
+				<input type="hidden" name="admin_login" value="1"></div>
+				<div class="row">
+					<div class="col-md-12">
+						<div th:if="${param.error}">
+						<p style="position: relative; ">
+							<i></i> <span>Invalid Username and Password.</span>
+						</p>
+					</div>
+					<div th:if="${param.logout}">
+					<p style="position: relative; left: 25%">
+						<i></i> <span
+						>You have been logged
+					out.</span>
+				</p>
+			</div>
+			<div th:if="${msg!=null}">
+			<p>
+				<i></i> <span th:text="${msg}"></span>
+			</p>
+		</div>
+	</div>
+</div>
+</form>
+
+</div>
+
+
+</body>
+</html>

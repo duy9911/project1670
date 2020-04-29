@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body style="background-image: url(/assets/images/backgroundHome.jpg);">
+
+	<th:block th:include="/common/logo"></th:block>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="container">
+		<div class="row" style=" border-radius: 30px; border-style: solid;">
+			<div class="col-lg-2 col-md-2" id="boderleft">
+				<div sec:authorize="hasAuthority('admin')">
+					<th:block th:include="/common/sidebaradmin"></th:block>
+				</div>
+				<div sec:authorize="hasAuthority('trainingstaff')">
+					<th:block th:include="/common/sidebartrainingstaff"></th:block>
+				</div>
+				<div sec:authorize="hasAuthority('trainer')">
+					<th:block th:include="/common/sidebartrainer"></th:block>
+				</div>
+			</div>
+
+			<div class="col-lg-10 col-md-10" style="background-color: #CC681D; border-top-right-radius: 20px; border-bottom-right-radius: 20px;">
+				<div class="row">
+					<div class="col-lg-12 col-md-12">
+						<th:block th:include="/common/menuTop"></th:block>
+					</div>
+					<div class="col-lg-12 col-md-12" style="margin-top: 20px; background-color: #F8FAD5; ">
+						<div>
+							<th:block th:include="/common/home"></th:block>
+							<div sec:authorize="hasAuthority('trainingstaff')">
+								<th:block th:include="/common/sidebartrainingstaff"></th:block>
+								<th:block th:include="/common/home"></th:block>
+							</div>
+
+							<div sec:authorize="hasAuthority('trainer')">
+								<th:block th:include="/common/sidebartrainer"></th:block>
+								<th:block th:include="/common/home"></th:block>
+							</div>
+							<!-- Include dasboars -->
+							<script src="js/main.js"></script>
+							<th:block th:include="/common/footer"></th:block> 
+						</div>
+					</div>
+				</div>  
+
+			</div>
+
+
+
+		</div>
+	</div>
+</body>
+</html>

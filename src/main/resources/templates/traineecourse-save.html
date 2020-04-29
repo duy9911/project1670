@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<style>
+		body, html {
+			/* width: 100%; */
+			height: 100%;
+
+		}
+	</style>
+</head>
+<body style="background-image: url(/assets/images/backgroundHome.jpg);">
+
+	<th:block th:include="/common/logo"></th:block>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="row" style=" border-radius: 30px; border-style: solid;">
+		<div class="col-lg-2 col-md-2" id="boderleft">
+			<th:block th:include="/common/sidebartrainingstaff"></th:block>
+		</div>
+
+		<div class="col-lg-10 col-md-10" style="background-color: #CC681D; border-top-right-radius: 20px; border-bottom-right-radius: 20px;">
+			<div class="row">
+				<div class="col-lg-12 col-md-12">
+					<th:block th:include="/common/menuTop"></th:block>
+				</div>
+				<div class="col-lg-12 col-md-12" style="margin-top: 20px; background-color: #F8FAD5; ">
+					<div>
+						<div class="row">
+							<div class="col-lg-12">
+
+								<div class="main-card mb-3 card">
+									<div class="card-body">
+										<div class="row">
+											<div class="col-4">
+
+											</div>
+
+											<div class="col-4">
+												<div style="width: 100%; text-align: center;"><h3>Assign Trainee-Course</h3></div>
+												<div class="search-wrapper">
+													<div class="input-holder">
+                                               <form th:action="@{/saveTraineeCourse}" method="POST" th:object="${traineecourse}">
+                                                    <div class="position-relative form-group">
+                                                    	<input th:field="*{ID}" type="hidden" class="form-control" readonly="true">
+                                                    </div>
+                                                    <div class="form-group blu-margin" >
+													    <select class="form-control" th:field="${traineecourse.trainee.traineeID}"  id="dropTrainee">
+													    <option value="0">Select Trainee</option>
+													    <option th:each="trainee : ${listTrainee}" th:value="${trainee.traineeID}" th:text="${trainee.appUser.username}"></option>
+													    </select>
+													</div>
+													
+													<div class="form-group blu-margin" >
+													    <select class="form-control" th:field="${traineecourse.course.courseID}"  id="dropCourse">
+													    <option value="0">Select Course</option>
+													    <option th:each="course : ${listCourse}" th:value="${course.courseID}" th:text="${course.courseName}"></option>
+													    </select>
+													</div>
+                                                    	
+                                                    	<div class="row">
+													       <div class="col-xs-12">
+													        <div th:if="${#fields.hasErrors('ID')}" th:errors="*{ID}"
+													         class="alert alert-danger alert-dismissable">
+													        </div>
+													     </div>
+													     </div>
+                                                    <input type="submit" value="Submit" class="mt-1 btn btn-primary">
+                                                </form>
+														</div>
+													</div>
+
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>  
+
+							</div>
+
+
+
+						</div>
+
+					</body>
+					</html>
